@@ -49,3 +49,17 @@
     padding: 20px;
     width: 100%;
   }
+
+  .suggest-list{
+    margin: 30px;
+  }
+  
+  .video-page{
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+  
+  .suggested img{
+    margin: 10px;
+  }
