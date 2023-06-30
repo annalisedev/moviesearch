@@ -1,29 +1,10 @@
-// console.log("hello Rishav");
+var mainVideoEl = document.querySelector('.video-play');
+var suggestionsEl = document.querySelector('.suggest-list');
+var searchBoxEl = document.querySelector('#moviename');
 
-// console.log('Chris');
-
-// function myFunction() {
-//     // Declare variables
-//     var input, filter, ul, li, a, i, txtValue;
-//     input = document.getElementById('myInput');
-//     filter = input.value.toUpperCase();
-//     ul = document.getElementById("myUL");
-//     li = ul.getElementsByTagName('li');
-  
-//     // Loop through all list items, and hide those who don't match the search query
-//     for (i = 0; i < li.length; i++) {
-//       a = li[i].getElementsByTagName("a")[0];
-//       txtValue = a.textContent || a.innerText;
-//       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//         li[i].style.display = "";
-//       } else {
-//         li[i].style.display = "none";
-//       }
-//     }
-//   }
 
 async function MovieData(){
-  var movie = document.getElementById("movie").value;
+  var movie = document.getElementById("moviename").value;
   let url =`https://www.omdbapi.com/?t=${movie}&apikey=5bc37ae5`
   let res = await fetch(url)
   let data = await res.json();
@@ -72,4 +53,51 @@ async function MovieData(){
 
   box.append(display);
 }
+
+
+var showTrailer = () => {
+var searchMovie = searchBoxEl.value;
+searchMovie += ' meangirlstrailer'
+var url = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=4&type=video&videoEmbeddable=true&key=AIzaSyCx-CxS-80q1yfvlKnjp2Lb9tiPQQppwaA&q=' + searchMovie;
+
+fetch(url)
+.then(response => response.json())
+.then(
+
+    result => {
+  mainVideoEl.textContent = '';
+  mainVideoEl.innerHTML = `<iframe class="embed-responsive-item" src=https://www.youtube.com/embed/${result.items[0].id.videoId} allowFullScreen title='youtube player' />`;
+  populateSuggestions(result.items.slice(1, 10));
+  console.log(result);
+})
+.catch(error => {
+  console.log(error);
+  document.querySelector('.video-play').textContent = error;
+});
+};
+
+const populateSuggestions = (videos) => {
+suggestionsEl.textContent = '';
+
+for (video of videos) {
+let videoElement = `<a href="#" class="suggested" data-videoId=${video.id.videoId} ><img src=${video.snippet.thumbnails.medium.url} /></a>`;
+suggestionsEl.insertAdjacentHTML('beforeend', videoElement);
+}
+
+document.querySelectorAll('a.suggested').forEach((element) => {
+element.addEventListener('click', (e) => {
+  let videoid = e.currentTarget.dataset.videoid;
+  mainVideoEl.textContent = '';
+  mainVideoEl.innerHTML = `<iframe class="embed-responsive-item" src=https://www.youtube.com/embed/${videoid} allowFullScreen title='youtube player' />`;
+});
+});
+};
+
+document.querySelector('button').addEventListener('click', () => {
+showTrailer();
+MovieData();
+});
+
+
+showTrailer();
 
