@@ -4,12 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Movie Search Web App</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Movie Search</title>
+
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+
+
+    <h1>Search Movie Here:</h1>
+    <div>
+        <input class="searchBox" type="text" id="moviename" placeholder="Movie title" />
+        <button class="searchBox" onclick="MovieData()" >Click Here To Search</button></div>
+    <div id= "fill"></div>
+
+
+    <div class="container video-page">
+    <div class="container">
+        <div class="row">
+          <div class=" bg-primary video-play embed-responsive embed-responsive-21by9">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="suggest-list">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <input class="form-control" type="text" id="movie-search-box" onkeyup="myFunction()" placeholder="Search for names.." onclick = "myFunction()">
+
+
+<ul id="myUL">
+  <li><a href="#">Adele</a></li>
+  <li><a href="#">Agnes</a></li>
+
+  <li><a href="#">Billy</a></li>
+  <li><a href="#">Bob</a></li>
+
+  <li><a href="#">Calvin</a></li>
+  <li><a href="#">Christina</a></li>
+  <li><a href="#">Cindy</a></li>
+</ul> -->
+
 
     <div class="container min-h-screen min-w-full">
     <header>
