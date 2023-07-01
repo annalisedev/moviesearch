@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Movie Search Web App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <title>Movie Search</title>
+
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -47,7 +52,28 @@
   <li><a href="#">Cindy</a></li>
 </ul> -->
 
+
+    <div class="container min-h-screen min-w-full">
+    <header>
+        <h1 class="text-center">Movie Search Web App</h1>
+    </header>
+        
+        <section class="h-56 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4 content-normal mx-10 ">
+            <div class="border-solid border-2 border-indigo-600 text-center">Search Box /Previous Search Area
+                <p class="text-left">(Place the config for the search bar and the button here [When done with the button, i can see if i can customise it and make it prettier]. Also the local storage info [prev searches])</p>
+            </div>
+            <div class="border-solid border-2 border-indigo-600 text-center">YouTube AREA
+                <p class="text-left">Place YT API Work in this Place.</p>
+            </div>
+            <div class="border-solid border-2 border-indigo-600 text-center">Data shown from OMDB AREA
+                <P class="text-left">Place to locate the OMDB Info</P>
+            </div>
+        </section>
+    </div> 
+   
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
+
+

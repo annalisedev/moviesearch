@@ -1,16 +1,21 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    justify-content: flex-start;
-  }
+header{
+    background: black;
+    color:white;
+    font-size: 50px;
+    padding-bottom: 75px;
+    margin-bottom: 100px;
 
+}
+
+
+header h1{
+    padding-top:50px;
+
+}
+
+section{
+    
+}
 
   #myInput {
     background-image: url('/css/searchicon.png'); /* Add a search icon to input */
@@ -63,3 +68,4 @@
   .suggested img{
     margin: 10px;
   }
+
