@@ -1,6 +1,9 @@
-var mainVideoEl = document.querySelector('.video-play');
-var suggestionsEl = document.querySelector('.suggest-list');
-var searchBoxEl = document.querySelector('#moviename');
+let mainVideoEl = document.querySelector('.video-play');
+let suggestionsEl = document.querySelector('.suggest-list');
+let searchBoxEl = document.querySelector('#moviename');
+let movieNameRef = document.getElementById("moviename");
+let result = document.getElementById("fill");
+
 
 // Retrieve previous searches from local storage and display them
 var previousSearches = JSON.parse(localStorage.getItem('previousSearches')) || [];
@@ -12,52 +15,52 @@ previousSearches.forEach(searchTerm => {
 });
 
 async function MovieData(){
-  var movie = document.getElementById("moviename").value;
-  let url =`https://www.omdbapi.com/?t=${movie}&apikey=5bc37ae5`
-  let res = await fetch(url)
-  let data = await res.json();
 
-  console.log(data);
-  
-  var box = document.getElementById("fill")
-  box.innerHTML = null;
+  let movieName = movieNameRef.value;
 
-  var poster = document.createElement("img")
-  poster.src = data.Poster;
+  //If search is empty
+  if (movieName.length <= 0) {
+    result.innerHTML = `<h1><strong>Please Enter A Movie Name</strong></h1>`;
+  }
+  //If search is NOT empty
+  else {
+    var movie = document.getElementById("moviename").value;
+    let url =`https://www.omdbapi.com/?t=${movie}&apikey=5bc37ae5`
+    let res = await fetch(url)
+    let data = await res.json();
 
-  var title = document.createElement("p")
-  title.innerHTML = `Title: ${data.Title}`;
+      var box = document.getElementById("fill")
+      box.innerHTML = null;
 
-  var Actors = document.createElement("p")
-  Actors.innerText = "Actors: "+ data.Actors;
+      var poster = document.createElement("img")
+      poster.src = data.Poster;
 
-  var Awards = document.createElement("p")
-  Awards.innerText = "Awards: "+ data.Awards;
+      var title = document.createElement("p")
+      title.innerHTML = `Title: ${data.Title}`;
 
-  var year = document.createElement("p")
-  year.innerText = `Release Date: ${data.Released}`;
+      var Actors = document.createElement("p")
+      Actors.innerText = "Actors: "+ data.Actors;
 
-  var genre = document.createElement("p")
-  genre.innerText = "Genres: " + data.Genre;
+      var Awards = document.createElement("p")
+      Awards.innerText = "Awards: "+ data.Awards;
 
-  var boxoffice = document.createElement("p")
-  boxoffice.innerText = `BoxOffice: ${data.BoxOffice}`;
+      var year = document.createElement("p")
+      year.innerText = `Release Date: ${data.Released}`;
 
-  var language = document.createElement("p")
-  language.innerText = "Language: "+ data.Language;
+      var genre = document.createElement("p")
+      genre.innerText = "Genres: " + data.Genre;
 
-  var rating = document.createElement("p")
-  rating.innerText = `imdbRating: ${data.imdbRating}`;
+      var boxoffice = document.createElement("p")
+      boxoffice.innerText = `BoxOffice: ${data.BoxOffice}`;
 
-  var Director= document.createElement("p")
-  Director.innerText = "Director: "+ data.Director;
+      var language = document.createElement("p")
+      language.innerText = "Language: "+ data.Language;
 
-  var Plot= document.createElement("p")
-  Plot.innerText = "Plot: "+ data.Plot;
+      var rating = document.createElement("p")
+      rating.innerText = `imdbRating: ${data.imdbRating}`;
 
-  let display = document.createElement("p")
-  display.setAttribute("class","box")
-  display.append(poster, title, Awards, genre, year,language,rating,Director,Actors,boxoffice,Plot)
+      var Director= document.createElement("p")
+      Director.innerText = "Director: "+ data.Director;
 
   box.append(display);
 
@@ -67,10 +70,22 @@ localStorage.setItem('previousSearches', JSON.stringify(previousSearches));
   
 }
 
+      var Plot= document.createElement("p")
+      Plot.innerText = "Plot: "+ data.Plot;
 
+      let display = document.createElement("p")
+      display.setAttribute("class","box")
+      display.append(poster, title, Awards, genre, year,language,rating,Director,Actors,boxoffice,Plot)
+
+      box.append(display);
+
+      console.log(data);
+  } 
+}
 var showTrailer = () => {
 var searchMovie = searchBoxEl.value;
-searchMovie += ' ${searchMovie}trailer'
+searchMovie += `${searchMovie}trailer`
+
 var url = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=4&type=video&videoEmbeddable=true&key=AIzaSyCx-CxS-80q1yfvlKnjp2Lb9tiPQQppwaA&q=' + searchMovie;
 
 fetch(url)
