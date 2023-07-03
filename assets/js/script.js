@@ -4,6 +4,16 @@ let searchBoxEl = document.querySelector('#moviename');
 let movieNameRef = document.getElementById("moviename");
 let result = document.getElementById("fill");
 
+
+// Retrieve previous searches from local storage and display them
+var previousSearches = JSON.parse(localStorage.getItem('previousSearches')) || [];
+var previousSearchesList = document.getElementById('previousSearches');
+previousSearches.forEach(searchTerm => {
+  var listItem = document.createElement('li');
+  listItem.textContent = searchTerm;
+  previousSearchesList.appendChild(listItem);
+});
+
 async function MovieData(){
 
   let movieName = movieNameRef.value;
@@ -52,6 +62,14 @@ async function MovieData(){
       var Director= document.createElement("p")
       Director.innerText = "Director: "+ data.Director;
 
+  box.append(display);
+
+// Save the current search term to local storage
+previousSearches.push(movie);
+localStorage.setItem('previousSearches', JSON.stringify(previousSearches));
+  
+}
+
       var Plot= document.createElement("p")
       Plot.innerText = "Plot: "+ data.Plot;
 
@@ -67,6 +85,7 @@ async function MovieData(){
 var showTrailer = () => {
 var searchMovie = searchBoxEl.value;
 searchMovie += `${searchMovie}trailer`
+
 var url = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=4&type=video&videoEmbeddable=true&key=AIzaSyCx-CxS-80q1yfvlKnjp2Lb9tiPQQppwaA&q=' + searchMovie;
 
 fetch(url)
