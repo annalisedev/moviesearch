@@ -4,6 +4,10 @@
     box-sizing: border-box;
   }
   
+  .img {
+    align-items: center;
+  }
+
   html {
     height: 100%;
   }
