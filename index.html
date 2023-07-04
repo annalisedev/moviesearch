@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Movie Search Web App</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <title>Movie Search</title>
-
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-<body>
-
- 
-
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
     <div class="container min-h-screen min-w-full h-14">
-    <header>
+      <header>
         <h1 class="text-center">Movie Search Web App</h1>
-    </header>
+      </header>
 
-        <section class="h-56 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4 content-normal mx-10 ">
-            <div class="border-solid border-2 border-indigo-600 text-center">
-                <h1>Search Movie Here:</h1>
-    <div>
-        <input class="searchBox" type="text" id="moviename" placeholder="Movie title" />
-        <button class="searchBox" onclick="MovieData()" >Click Here To Search</button>
-    </div>
-    
-    <h2>Previous Searches:</h2>
-    <ul id="previousSearches"></ul>
-    <!-- <div id= "fill"></div> -->
+      <section
+        class="h-56 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4 content-normal mx-10"
+      >
+        <div class="border-solid border-2 border-indigo-600 text-center">
+          <h1>Search Movie Here:</h1>
+          <div>
+            <input
+              class="searchBox"
+              type="text"
+              id="moviename"
+              placeholder="Movie title"
+            />
+            <button class="searchBox" id="search-button">
+              Click Here To Search
+            </button>
+          </div>
 
+          <h2>Previous Searches:</h2>
+          <ul id="previousSearches"></ul>
+          <!-- <div id= "fill"></div> -->
 
-    <!-- <div class="container video-page">
+          <!-- <div class="container video-page">
     <div class="container">
         <div class="row">
           <div class=" bg-primary video-play embed-responsive embed-responsive-21by9">
@@ -49,33 +57,33 @@
         </div>
       </div>
     </div> -->
+        </div>
+        <div class="border-solid border-2 border-indigo-600 text-center">
+          <div class="container video-page">
+            <div class="container">
+              <div class="row">
+                <div
+                  class="bg-primary video-play embed-responsive embed-responsive-21by9"
+                ></div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="suggest-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border-solid border-2 border-indigo-600 text-center">
+          <div id="fill"></div>
+        </div>
+      </section>
+    </div>
 
-            </div>
-            <div class="border-solid border-2 border-indigo-600 text-center">
-                <div class="container video-page">
-                    <div class="container">
-                        <div class="row">
-                          <div class=" bg-primary video-play embed-responsive embed-responsive-21by9">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container">
-                        <div class="row">
-                          <div class="suggest-list">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-            </div>
-            <div class="border-solid border-2 border-indigo-600 text-center">
-                <div id= "fill"></div>
-            </div>
-        </section>
-    </div> 
-   
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>
 
 <!-- 
