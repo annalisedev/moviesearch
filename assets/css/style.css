@@ -1,17 +1,8 @@
-header{
-  background: black;
-  color:white;
-  font-size: 50px;
-  padding-bottom: 75px;
-  margin-bottom: 100px;
-
+html{
+  height:100;
 }
 
 
-header h1{
-  padding-top:50px;
-
-}
 
   #myInput {
     background-image: url('/css/searchicon.png'); /* Add a search icon to input */
@@ -78,19 +69,14 @@ color: white;
 }
 
 .highlight {
-background-color: blue;
-}
+color: white;
+font-weight: bolder;
+background-color: rgb(59 130 246);
+border-radius: 50px;
+padding-top: 5px;
+padding-bottom: 5px;
 
-/*
-.suggest-list {
-position: absolute;
-z-index: 9999;
-background-color: white;
-border: 1px solid #ccc;
-max-height: 200px;
-overflow-y: auto;
 }
-*/
 
 .suggest-list {
   margin: 30px;
