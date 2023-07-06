@@ -35,7 +35,6 @@ previousSearches = [...new Set(previousSearches)];
 //function to search movie data on OMDB
 
 async function movieData(movie, movieId) {
-  console.log("Getting data for " + movie + " with id " + movieId);
   //If search is empty
   if (movie.length <= 0) {
     result.innerHTML = `<h1><strong>Please Enter A Movie Name</strong></h1>`;
@@ -99,8 +98,6 @@ async function movieData(movie, movieId) {
     );
 
     box.append(display);
-
-    console.log(data);
   }
 
   // Save the current search term to local storage
@@ -121,10 +118,8 @@ var showTrailer = (searchMovie) => {
       mainVideoEl.textContent = "";
       mainVideoEl.innerHTML = `<iframe class="embed-responsive-item" src=https://www.youtube.com/embed/${result.items[0].id.videoId} allowFullScreen title='youtube player' />`;
       populateSuggestions(result.items.slice(1, 10));
-      console.log(result);
     })
     .catch((error) => {
-      console.log(error);
       document.querySelector(".video-play").textContent = error;
     });
 };
@@ -150,7 +145,6 @@ async function loadMovies(searchTerm) {
   const URL = `https://omdbapi.com/?s=${searchTerm}&page=1&apikey=5bc37ae5`;
   const res = await fetch(`${URL}`);
   const data = await res.json();
-  console.log(data.Search);
   // if (data.Response == "True") displayMovieList(data.Search);
   if (data.Response === "True") {
     var sources = [];
@@ -165,12 +159,10 @@ async function loadMovies(searchTerm) {
       source: sources,
       select: function (event, selected) {
         const item = selected.item;
-        console.log("Selected item", item);
         if (item && item.value) {
           showTrailer(item.label);
           movieData(item.value, item.imdbID);
         }
-        console.log(item);
       },
     });
     // $("#moviename").focus();
