@@ -3,15 +3,34 @@ var suggestionsEl = document.querySelector(".suggest-list");
 var searchBoxEl = document.querySelector("#moviename");
 let result = document.getElementById("fill");
 
-// Retrieve previous searches from local storage and display them
-var previousSearches =
-  JSON.parse(localStorage.getItem("previousSearches")) || [];
+// Retrieve previous searches from local storage and display the last 10
+var previousSearches = JSON.parse(localStorage.getItem("previousSearches")) || [];
 var previousSearchesList = document.getElementById("previousSearches");
+
+// Limit the previous searches to the last 7
+previousSearches = previousSearches.slice(-7);
+
+// Reverse the order of previous searches to bring the newest one to the top
+previousSearches.reverse();
+
 previousSearches.forEach((searchTerm) => {
   var listItem = document.createElement("li");
   listItem.textContent = searchTerm;
+  listItem.addEventListener("click", () => {
+    searchBoxEl.value = searchTerm;
+    loadMovies(searchTerm);
+  });
+  listItem.addEventListener("mouseenter", () => {
+    listItem.classList.add("highlight");
+  });
+  listItem.addEventListener("mouseleave", () => {
+    listItem.classList.remove("highlight");
+  });
   previousSearchesList.appendChild(listItem);
 });
+
+// Remove duplicates from previous searches array
+previousSearches = [...new Set(previousSearches)];
 
 //function to search movie data on OMDB
 
@@ -164,9 +183,16 @@ document.getElementById("search-button").addEventListener("click", () => {
   loadMovies(searchTerm);
 });
 
-// document.querySelector("button").addEventListener("click", () => {
-//   showTrailer();
-//   movieData();
-// });
 
-showTrailer();
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    const searchTerm = searchBoxEl.value.trim();
+    loadMovies(searchTerm);
+  }
+});
+
+document.getElementById("search-button").addEventListener("click", () => {
+  const searchTerm = searchBoxEl.value.trim();
+  loadMovies(searchTerm);
+}); 
