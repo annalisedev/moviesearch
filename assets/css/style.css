@@ -78,16 +78,6 @@ padding-bottom: 5px;
 
 }
 
-
-/* .suggest-list {
-position: absolute;
-z-index: 9999;
-background-color: white;
-border: 1px solid #ccc;
-max-height: 200px;
-overflow-y: auto;
-} */
-
-.suggest-list{
+.suggest-list {
   margin: 30px;
 }
