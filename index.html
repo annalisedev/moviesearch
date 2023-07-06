@@ -15,66 +15,53 @@
     />
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <style>
-      .suggest-list {
-        position: absolute;
-        z-index: 9999;
-        background-color: white;
-        border: 1px solid #ccc;
-        max-height: 200px;
-        overflow-y: auto;
-      }
-    </style>
+
   </head>
-  <body>
-    <div class="container min-h-screen min-w-full h-14">
-      <header>
-        <h1 class="text-center">Movie Search Web App</h1>
-      </header>
 
-      <section
-        class="h-56 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4 content-normal mx-10"
-      >
-        <div class="border-solid border-2 border-indigo-600 text-center">
-          <h1>Search Movie Here:</h1>
-          <div>
-            <input
-              class="searchBox"
-              type="text"
-              id="moviename"
-              placeholder="Movie title"
-            />
-            <button class="searchBox" id="search-button">
-              Click Here To Search
-            </button>
-          </div>
-
-          <h2>Previous Searches:</h2>
-          <ul id="previousSearches"></ul>
+  <body class="bg-gray-200 h-screen">
+    <h1 class="text-6xl font-bold mb-4 bg-gray-600 text-white text-center py-10">Movie Search</h1>
+      <div class="container mx-auto px-4 py-8">
+        <div class="flex items-center justify-center mb-4">
+          <input type="text" class="searchBox rounded-l-lg py-2 px-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" id="moviename" placeholder="Search for a movie...">
+          <button class="px-4 rounded-r-lg bg-blue-500 text-white font-semibold py-2 searchBox" id="search-button">
+            Search
+          </button>
         </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="bg-white rounded-lg shadow-md p-4">
+            <button class="px-4 rounded-lg bg-blue-500 text-white dont-semibold py-2 block m-auto">Previous Searches</button>
+            <ul class="text-center pt-6" id="previousSearches"></ul>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-md p-4">
+            <div class="px-4 rounded-lg bg-red-600 text-white dont-semibold py-2 text-center">Youtube Video Trailer</div>
+            <div class="pt-6 container video-page">
+              <div class="container">
+                  <div class="row">
+                    <div class="bg-primary video-play embed-responsive embed-responsive-21by9">
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div class="suggest-list">
+                    </div>
+                  </div>
+                </div>
 
-        <div class="border-solid border-2 border-indigo-600 text-center">
-          <div class="container video-page">
-            <div class="container">
-              <div class="row">
-                <div
-                  class="bg-primary video-play embed-responsive embed-responsive-21by9"
-                ></div>
+      
               </div>
-            </div>
-            <div class="container">
-              <div class="row">
-                <div class="suggest-list"></div>
-              </div>
-            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-md p-4">
+            <div class="px-4 rounded-lg bg-black text-white dont-semibold py-2 text-center">OMDB Information</div>
+            <div class="pt-6" id= "fill"></div>
           </div>
         </div>
+        
 
-        <div class="border-solid border-2 border-indigo-600 text-center">
-          <div id="fill"></div>
-        </div>
-      </section>
-    </div>
+      </div>
+      <footer class="absolute right-0 left-0 bottom-0 font-bold mb-4 bg-gray-600 text-white text-center py-10">Developed By Annalise, Christian, Mustafa, Rishav</footer>
+    
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
