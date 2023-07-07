@@ -23,4 +23,8 @@ How to create a YouTube API key 2021 - https://www.youtube.com/watch?v=yuM7KH-JL
 JS for the Youtube API - https://lekansogunle.medium.com/building-a-youtube-player-with-video-search-api-589f3d385e3d
 How To Show YouTube API results in your HTML Website using JavaScript - https://www.youtube.com/watch?v=K9G3Yc0pw9g
 5 ways to center a div in Tailwind CSS - https://www.youtube.com/watch?v=NZp7WjzhoDs 
+OMDB API - https://www.omdbapi.com/ 
+OMDB API Tutorial -  https://www.youtube.com/watch?v=UZtruL7svkc
+Test API Keys and Parameters - https://www.postman.com/ 
+Support from Tutor Danial Khrosravi to make the OMDB search results clickable
 
