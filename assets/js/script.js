@@ -33,7 +33,6 @@ previousSearches.forEach((searchTerm) => {
 previousSearches = [...new Set(previousSearches)];
 
 //function to search movie data on OMDB
-
 async function movieData(movie, movieId) {
   //If search is empty
   if (movie.length <= 0) {
@@ -124,6 +123,7 @@ var showTrailer = (searchMovie) => {
     });
 };
 
+//function for the following three movies to have other suggestions based on search
 const populateSuggestions = (videos) => {
   suggestionsEl.textContent = "";
 
@@ -175,7 +175,7 @@ document.getElementById("search-button").addEventListener("click", () => {
   loadMovies(searchTerm);
 });
 
-
+//event listener for clicking enter key so user doesn't have to use their mouse to select
 document.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -184,6 +184,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+//event listener for the click of search
 document.getElementById("search-button").addEventListener("click", () => {
   const searchTerm = searchBoxEl.value.trim();
   loadMovies(searchTerm);

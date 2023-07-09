@@ -2,8 +2,6 @@ html{
   height:100;
 }
 
-
-
   #myInput {
     background-image: url('/css/searchicon.png'); /* Add a search icon to input */
     background-position: 10px 12px; /* Position the search icon */
@@ -36,11 +34,6 @@ html{
   #myUL li a:hover:not(.header) {
     background-color: #eee; /* Add a hover effect to all links, except for headers */
   }
-
-  /* .searchBox {
-    padding: 20px;
-    width: 100%;
-  } */
 
   .suggest-list{
     margin: 30px;
