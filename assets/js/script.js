@@ -140,7 +140,7 @@ async function movieData(movie, movieId) {
 var showTrailer = (searchMovie) => {
   searchMovie += `${searchMovie}trailer`;
   var url =
-    "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=4&type=video&videoEmbeddable=true&key=YOUR_YOUTUBE_API_KEY&q=" +
+    "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=4&type=video&videoEmbeddable=true&key=AIzaSyDDF0OQz9LMDmhmAxdxqPCx5tBb03x8Y3U&q=" +
     searchMovie;
 
   fetch(url)
