@@ -32,6 +32,37 @@ previousSearches.forEach((searchTerm) => {
 // Remove duplicates from previous searches array
 previousSearches = [...new Set(previousSearches)];
 
+// Update previous searches in the HTML
+function updatePreviousSearches() {
+  previousSearchesList.innerHTML = ""; // Clear previous searches list
+
+  // Reverse the order of previous searches to bring the newest one to the top
+  previousSearches.reverse();
+
+  // Display the updated previous searches in the HTML
+  previousSearches.forEach((searchTerm) => {
+    var listItem = document.createElement("li");
+    listItem.textContent = searchTerm;
+    listItem.addEventListener("click", () => {
+      searchBoxEl.value = searchTerm;
+      loadMovies(searchTerm);
+    });
+    listItem.addEventListener("mouseenter", () => {
+      listItem.classList.add("highlight");
+    });
+    listItem.addEventListener("mouseleave", () => {
+      listItem.classList.remove("highlight");
+    });
+    previousSearchesList.appendChild(listItem);
+  });
+
+  // Limit the previous searches to the last 7
+  previousSearches = previousSearches.slice(-7);
+
+  // Save the updated previous searches to local storage
+  localStorage.setItem("previousSearches", JSON.stringify(previousSearches));
+}
+
 //function to search movie data on OMDB
 async function movieData(movie, movieId) {
   //If search is empty
@@ -102,13 +133,14 @@ async function movieData(movie, movieId) {
   // Save the current search term to local storage
   previousSearches.push(movie);
   localStorage.setItem("previousSearches", JSON.stringify(previousSearches));
+  updatePreviousSearches(); // Update previous searches in HTML
 }
 
 //function to pull trailers from Youtube, adds 'trailer' to any search that the user inputs
 var showTrailer = (searchMovie) => {
   searchMovie += `${searchMovie}trailer`;
   var url =
-    "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=4&type=video&videoEmbeddable=true&key=AIzaSyCiZOgg1dGLIb6C5PXqBpWE4UZDdPF8IE0&q=" +
+    "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelType=any&maxResults=4&type=video&videoEmbeddable=true&key=YOUR_YOUTUBE_API_KEY&q=" +
     searchMovie;
 
   fetch(url)
@@ -175,6 +207,7 @@ document.getElementById("search-button").addEventListener("click", () => {
   loadMovies(searchTerm);
 });
 
+
 //event listener for clicking enter key so user doesn't have to use their mouse to select
 document.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
@@ -189,3 +222,4 @@ document.getElementById("search-button").addEventListener("click", () => {
   const searchTerm = searchBoxEl.value.trim();
   loadMovies(searchTerm);
 }); 
+
